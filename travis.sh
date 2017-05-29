@@ -10,6 +10,7 @@ fi
 
 if [[ "$TRAVIS_BRANCH" == "develop" ]]; then
     # This runs on a merge into develop.
+    ls -al
     sh ./upload_development_container.sh
     exit $?
 fi
