@@ -1,0 +1,20 @@
+language: objective-c
+
+# Services
+service:
+    - docker
+
+# Branch Whitelist
+branches:
+    only:
+        - master
+        - testflight
+        - develop
+
+before_install:
+    - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+
+script: "./travis.sh"
+
+notifications:
+  slack: froghat:rCrsbEuv9RqaqfTHQ46X9v1L
