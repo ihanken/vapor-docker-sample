@@ -4,7 +4,7 @@
 DOCKER_LOGIN=`aws ecr get-login --region us-west-2`
 REGION=us-west-2
 REPOSITORY_NAME=vapor-example
-CLUSTER=VaporStack
+CLUSTER=vapor-example
 FAMILY=vapor-example-development
 NAME=vapor-example-development
 SERVICE_NAME=${NAME}-service
