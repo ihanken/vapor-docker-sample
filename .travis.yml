@@ -1,6 +1,6 @@
 sudo: required
 
-language: php
+language: ruby
 
 # Services
 service: docker
@@ -14,8 +14,6 @@ branches:
 
 before_install:
     - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
-    - sudo apt-get update
-    - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
     - docker build -t vapor-example .
     - docker run -d -p 8080:8080 vapor-example
     - docker ps -a
