@@ -5,9 +5,12 @@ libpq-dev
 
 RUN mkdir -p /vapor
 ADD /sample-app /vapor
+WORKDIR /vapor
 
-RUN cd vapor
+RUN ls -al
 RUN swift --version
+
+
 RUN swift build --configuration release
 
 EXPOSE 8080
