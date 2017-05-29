@@ -1,11 +1,11 @@
 #!/bin/bash
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
     # This runs when a pull request is submitted.
-    apt-get install docker-ce
-    apt-get update
-    docker build -t vapor-example .
-    docker run -d -p 8080:8080 vapor-example
-    docker ps -a
+    sudo apt-get install docker-ce
+    sudo apt-get update
+    sudo docker build -t vapor-example .
+    sudo docker run -d -p 8080:8080 vapor-example
+    sudo docker ps -a
     exit $?
 fi
 
