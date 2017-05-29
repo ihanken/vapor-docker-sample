@@ -1,26 +1,16 @@
 {
-    "family": "league-bot-development",
+    "family": "vapor-example-development",
     "containerDefinitions": [
         {
             "image": "%REPOSITORY_URI%:development-v_%BUILD_NUMBER%",
-            "name": "league-bot-development",
+            "name": "vapor-example-development",
             "cpu": 10,
             "memory": 256,
             "essential": true,
             "portMappings": [
                 {
-                    "containerPort": 80,
-                    "hostPort": 80
-                }
-            ],
-            "environment": [
-                {
-                    "name": "LEAGUE_BOT_TOKEN",
-                    "value": "%LEAGUE_BOT_DEVELOPMENT_TOKEN%"
-                },
-                {
-                    "name": "RIOT_API_KEY",
-                    "value": "%RIOT_API_KEY%"
+                    "containerPort": 8080,
+                    "hostPort": 8080
                 }
             ]
         }
