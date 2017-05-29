@@ -1,0 +1,28 @@
+sudo: required
+
+language: ruby
+
+dist: trusty
+
+# Services
+service: docker
+
+# Branch Whitelist
+branches:
+    only:
+        - master
+        - testflight
+        - develop
+
+before_install:
+    - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+
+install:
+    - pip install --user awscli
+    - export PATH=$PATH:$HOME/.local/bin
+    - sudo apt-get install jq
+
+script: "./travis.sh"
+
+notifications:
+  slack: froghat:rCrsbEuv9RqaqfTHQ46X9v1L
