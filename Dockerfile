@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y \
 libpq-dev
 
 RUN ls -al
-RUN mkdir -p /vapor
 ADD /sample-app /vapor
+RUN ls -al
 WORKDIR /vapor
 
 RUN ls -al
