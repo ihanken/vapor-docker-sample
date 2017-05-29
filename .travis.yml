@@ -24,7 +24,6 @@ install:
     - pip install --user awscli
     - export PATH=$PATH:$HOME/.local/bin
     - sudo apt-get install jq
-    - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 
 script: "./travis.sh"
 
