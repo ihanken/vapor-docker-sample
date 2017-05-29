@@ -1,7 +1,9 @@
 #!/bin/bash
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
     # This runs when a pull request is submitted.
-    sh ./run_tests.sh
+    - docker build -t vapor-example .
+    - docker run -d -p 8080:8080 vapor-example
+    - docker ps -a
     exit $?
 fi
 

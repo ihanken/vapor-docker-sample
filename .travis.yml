@@ -12,17 +12,19 @@ branches:
         - testflight
         - develop
 
+env:
+  global:
+    - DOCKER_VERSION=17.03.1  # Install Docker version 1.7.1
+    - DOCKER_VERSION=get.docker.com  # Install Docker using get.docker.com (may break)
+
 before_install:
     - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
-    - docker build -t vapor-example .
-    - docker run -d -p 8080:8080 vapor-example
-    - docker ps -a
-
 
 install:
     - pip install --user awscli
     - export PATH=$PATH:$HOME/.local/bin
     - sudo apt-get install jq
+    - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 
 script: "./travis.sh"
 
