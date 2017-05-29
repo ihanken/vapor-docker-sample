@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
     # This runs when a pull request is submitted.
     sh ./run_tests.sh
