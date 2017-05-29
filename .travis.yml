@@ -1,10 +1,11 @@
 sudo: required
 
-language: objective-c
+language: ruby
+
+dist: trusty
 
 # Services
-service:
-    - docker
+service: docker
 
 # Branch Whitelist
 branches:
@@ -19,8 +20,7 @@ before_install:
 install:
     - pip install --user awscli
     - export PATH=$PATH:$HOME/.local/bin
-    - brew install jq
-    - brew cask install docker
+    - sudo apt-get install jq
 
 script: "./travis.sh"
 
