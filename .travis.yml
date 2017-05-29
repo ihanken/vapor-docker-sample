@@ -1,9 +1,10 @@
 sudo: required
 
-language: ruby
+language: objective-c
 
 # Services
-service: docker
+service:
+    - docker
 
 # Branch Whitelist
 branches:
@@ -11,11 +12,6 @@ branches:
         - master
         - testflight
         - develop
-
-env:
-  global:
-    - DOCKER_VERSION=17.03.1  # Install Docker version 1.7.1
-    - DOCKER_VERSION=get.docker.com  # Install Docker using get.docker.com (may break)
 
 before_install:
     - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
