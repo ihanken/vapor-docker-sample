@@ -1,8 +1,7 @@
 language: objective-c
 
 # Services
-service:
-    - docker
+service: docker
 
 # Branch Whitelist
 branches:
@@ -11,8 +10,11 @@ branches:
         - testflight
         - develop
 
-before_install:
-    - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+before_install: echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+
+install:
+    - pip install --user awscli
+    - brew install jq
 
 script: "./travis.sh"
 
