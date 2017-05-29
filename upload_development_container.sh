@@ -14,6 +14,9 @@ BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
 # Login to ECR.
 ${DOCKER_LOGIN}
 
+#Store the repositoryUri as a variable
+REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${REGION} | jq .repositories[].repositoryUri | tr -d '"'`
+
 # Build the container.
 docker build -t ${NAME} .
 
@@ -22,9 +25,6 @@ docker tag ${NAME} ${REPOSITORY-URI}/${NAME}:development-v_${BUILD_NUMBER}
 
 # Push the new container.
 docker push ${REPOSITORY-URI}/${NAME}:development-v_${BUILD_NUMBER}
-
-#Store the repositoryUri as a variable
-REPOSITORY_URI=`aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${REGION} | jq .repositories[].repositoryUri | tr -d '"'`
 
 #Replace the build number and respository URI placeholders with the constants above
 sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" -e "s;%REPOSITORY_URI%;${REPOSITORY_URI};g" DevelopmentTaskDefinition.json > ${NAME}-v_${BUILD_NUMBER}.json
