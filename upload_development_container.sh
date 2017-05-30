@@ -22,10 +22,10 @@ echo ${REPOSITORY_URI}
 docker build -t ${NAME} .
 
 # Tag the new container
-docker tag ${NAME} ${REPOSITORY_URI}/${NAME}:development-v_${BUILD_NUMBER}
+docker tag ${NAME} ${REPOSITORY_URI}:development-v_${BUILD_NUMBER}
 
 # Push the new container.
-docker push ${REPOSITORY_URI}/${NAME}:development-v_${BUILD_NUMBER}
+docker push ${REPOSITORY_URI}:development-v_${BUILD_NUMBER}
 
 #Replace the build number and respository URI placeholders with the constants above
 sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" -e "s;%REPOSITORY_URI%;${REPOSITORY_URI};g" DevelopmentTaskDefinition.json > ${NAME}-v_${BUILD_NUMBER}.json
